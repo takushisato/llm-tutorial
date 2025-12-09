@@ -1,0 +1,26 @@
+volumes:
+  node_modules:
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/.docker/Dockerfile
+    container_name: django_llm_app
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: .docker/Dockerfile
+    container_name: frontend_llm_app
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
