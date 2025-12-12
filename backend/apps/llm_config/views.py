@@ -3,7 +3,7 @@ import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from apps.llm_config.prompts.cooking import DEFAULT_SYSTEM_PROMPT
+from apps.llm_config.prompts.default import DEFAULT_SYSTEM_PROMPT
 
 LLM_API_URL = os.getenv("LLM_API_URL", "http://llm:11434")
 
@@ -11,7 +11,7 @@ LLM_API_URL = os.getenv("LLM_API_URL", "http://llm:11434")
 class LLMChatAPIView(APIView):
     """
     フロントから文章を受け取り、
-    Ollama (Gemma) に投げて結果を返す API
+    Ollama に投げて結果を返す API
     """
 
     def post(self, request):
