@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Flex, Textarea, Text } from "@chakra-ui/react";
+import { postLLMChat } from "@/domain/api/llm";
 
 const LLMChatBox = () => {
   const [message, setMessage] = useState("");
@@ -10,14 +11,13 @@ const LLMChatBox = () => {
     if (!message.trim()) return;
 
     setLoading(true);
+    setResponse(null);
 
     try {
-      // 👇 今は API を叩かない（後で差し替える）
-      console.log("send to backend:", message);
-
-      // ダミーレスポンス
-      await new Promise((r) => setTimeout(r, 500));
-      setResponse("（ここに backend からの返答が入ります）");
+      const result = await postLLMChat({ message });
+      setResponse(result.response);
+    } catch (e) {
+      setResponse("エラーが発生しました。");
     } finally {
       setLoading(false);
     }
