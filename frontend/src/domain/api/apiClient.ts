@@ -4,7 +4,7 @@ import type { ErrorResponse } from "@/types/common/error-response";
 import { processErrorResponse } from "@/domain/api/process-error-response";
 
 // TODO 環境変数にする
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = "http://localhost:8888";
 
 type ApiClientConfig = {
   url: string;
