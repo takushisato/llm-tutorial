@@ -11,7 +11,7 @@ services:
     volumes:
       - ./backend:/app
     ports:
-      - "8000:8000"
+      - "8888:8888"
     restart: unless-stopped
 
   frontend:
@@ -24,7 +24,7 @@ services:
       - ./frontend:/app
       - node_modules:/app/node_modules
     ports:
-      - "3000:3000"
+      - "3333:3333"
 
   llm:
     image: ollama/ollama:latest

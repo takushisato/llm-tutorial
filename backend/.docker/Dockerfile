@@ -37,4 +37,4 @@ RUN poetry install --no-interaction --no-ansi
 # アプリ本体をコピー
 COPY backend/ /app/
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8888"]
