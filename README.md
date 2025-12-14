@@ -9,7 +9,7 @@
 ```
 1, リポジトリをローカルへクローン
 2,　「環境構築」セクションを参照し、環境を構築
-3, ブラウザで http://localhost:3333 にアクセス（認証は不要）
+3, ブラウザで http://localhost:3333 にアクセス（ログイン認証は不要）
 4、 質問を入力して送信
 5、 暫くすると LLM が生成した回答が表示される
 
@@ -33,7 +33,7 @@ docker exec -it llm_server ollama pull llama3.1:8b
 # サービス起動
 docker compose up -d
 
-# backend 管理者ユーザー作成（Django管理者ページを使う場合）
+# backend 管理者ユーザー作成（Django管理者ページを使うなら）
 cd backend
 docker compose exec backend sh -c "python manage.py createsuperuser"
 任意のユーザー名、メールアドレス、パスワードを入力してください。
@@ -41,6 +41,12 @@ docker compose exec backend sh -c "python manage.py createsuperuser"
 # サービス停止
 docker compose down
 ```
+
+## 公開ポート番号
+
+- フロントエンド: http://localhost:3333
+- バックエンド: http://localhost:8000
+- Django 管理者ページ: http://localhost:8000/admin
 
 ## LLM モデル例
 
